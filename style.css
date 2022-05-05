@@ -1,17 +1,20 @@
 /*======= GERAL =======================================*/
-:root{
-    font-size: 62.5%; /*1 rm = 10 px*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
 
+:root{
+   
     --primary-color: hsl(170, 100%, 26%);
     --headline: hsl(210, 11%, 15%);
     --paragraph: hsl(210, 9%, 31%);
-    --brand-beige: hsl(39, 100%, 97%,);
+    --brand-beige: hsl(39, 100%, 97%);
     --brand-light: hsl(148, 23%, 89%);
-}
+    --nav-height: 7.2rem;
 
-* {
-    margin: 0;
-    box-sizing: border-box; 
+    font-size: 62.5%; /*1 rm = 10 px*/
 }
 
 body {
@@ -19,32 +22,38 @@ body {
     font-size: 1.6rem;
 
     text-align: center;
+    overflow: overlay; /*Nao faz a soma lagura + barra lateral, barra latera fica por cima*/
+}
+
+ul {  
+    list-style: none;
 }
 
 .wrapper {
     width: 37.5rem;
     margin-right: auto;
     margin-left: auto;
+    padding-inline: 2.4rem;
 }
 
 /*======= HEADER =======================================*/
 
 header {
-    margin-top: 4.1rem;
+    margin-top: calc(4.1rem + var(--nav-height));
 }
 
 /* Antes do conteudo do header */
 header::before {
     content: "";
-    width: 100vw; /*view port width*/
-    height: 12rem;
-
+    width: 100%; /*view port width*/
+    height: calc(108rem + var(--nav-height));
+    background-color: var(--brand-light);
     display: block;
 
     position: absolute; /*sobreposto - por cima do conteudo*/
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: -10;
 
 }
 
@@ -100,7 +109,7 @@ header button {
 
 
 header img {
-    width: 26.4;
+    width: 26.4rem;
     display: block; /*Colar com a div de baixo*/
     margin-inline: auto;
     object-position: 0 2rem; /*Posição da imagem: (x, y) -> 20 joga pra baixo*/
@@ -122,7 +131,7 @@ header img {
     justify-content: center;
     gap: 6rem; /*Separação entre os elementos*/
 
-    padding-top: 4rem;
+    
 }
 
 .stat h3{
@@ -135,27 +144,137 @@ header img {
 .stat p{
     margin: 0;
     color: var(--primary-color);
+    font-size: 1.6rem;
 }
 
-/*======= NAVIGATION =======================================*/
+/*======= NAVIGATION - Barra ==================================*/
 nav {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    padding: 2.4rem 1.6rem; /*2 laterais e cima+baixo*/
+    height: var(--nav-height);
     position: fixed;
     top: 0;
     left: 50%;
     transform: translateX(-50%); 
 }
 
+nav .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
+}
 
+/*Classe para estilizar quando houver rolagem*/
+nav.scroll {
+    background-color: var(--primary-color);
+}
 
+nav.scroll svg:nth-child(1) path{
+    fill: white;/*Primeiro SVG*/
+}
 
+nav.scroll button path{
+    stroke: white; /*Segundo*/
+}
 
+nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 
+/*======= MENU - EXPANDED =======================================*/
+body.menu-expanded {
+    overflow: hidden;
+}
 
+/*Some com tudo, menos o nav*/
+body.menu-expanded > :not(nav){
+    display: none;
+}
 
+.menu,
+.close-menu,
+body.menu-expanded .open-menu {
+    opacity: 0;
+    visibility: hidden;
+}
 
+body.menu-expanded .menu,
+body.menu-expanded .close-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*junto: classe que tem no body, espaço é a classe de um filho*/
+body.menu-expanded .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--primary-color);
+
+    width: 100vw;
+    height: 100vh;
+
+    padding: var(--nav-height);
+}
+
+body.menu-expanded nav {
+    position: relative;
+}
+
+/*Pega o primeiro ul*/
+.menu ul:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    gap: 4.8rem;
+
+    margin-top: 6rem;
+
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 3.1rem;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu .button {
+    background-color: #FFFF;
+    border-radius: 4rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    display: inline-block; /*Quebra linha e tira sobreposição*/
+    padding: 1.6rem 3.2rem;
+
+    margin-top: 4.8rem;
+    margin-bottom: 8rem;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3.2rem;
+}
+
+body.menu-expanded .logo,
+body.menu-expanded button  {
+    position: relative;
+    z-index: 10;
+}
+
+body.menu-expanded .logo path{
+    fill: white;/*Primeiro SVG*/
+}
+
+body.menu-expanded button path{
+    stroke: white; /*Segundo*/
+}
