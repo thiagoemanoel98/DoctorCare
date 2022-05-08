@@ -38,6 +38,10 @@ ul {
     list-style: none;
 }
 
+img {
+    max-width: 100%;
+}
+
 .wrapper {
     width: 37.5rem;
     margin-right: auto;
@@ -47,6 +51,84 @@ ul {
 
 section {
     padding-block: 10rem;
+}
+
+section header h4{
+    font-size: 1.4rem;  /* 14 px*/
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1.6rem;
+    
+    line-height: 150%;
+    letter-spacing: 0.08rem;
+
+    text-transform: uppercase;
+/* identical to box height, or 21px */
+
+letter-spacing: 0.08em;
+}
+
+section header h2{
+    font-size: 3rem;
+    line-height: 3.9rem;
+
+    color: var(--headline);
+}
+
+section header h1{
+    font-size: 3.4rem;  /* */
+    color: var(--headline);
+    line-height: 100%;
+
+    margin-bottom: 2.4rem;   
+}
+
+section .content p {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 150%;
+
+    color: var(--paragraph);
+
+}
+
+/*======= NAVIGATION - Barra ==================================*/
+nav {
+    display: flex;
+
+    height: var(--nav-height);
+    position: fixed;
+    top: 0;
+    width: 100vw; 
+
+    z-index: 100;
+}
+
+nav .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+/*Classe para estilizar quando houver rolagem*/
+nav.scroll {
+    background-color: var(--primary-color);
+  
+}
+
+nav.scroll .logo path{
+    fill: white;/*Primeiro SVG*/
+}
+
+nav.scroll button path{
+    stroke: white; /*Segundo*/
+}
+
+nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 /*======= HOME =======================================*/
@@ -71,20 +153,6 @@ section {
 
 }
 
-#home h4 {
-    font-size: 1.4rem;  /* 14 px*/
-    color: var(--primary-color);
-    margin-bottom: 1.6rem;
-}
-
-#home h1 {
-    font-size: 3.4rem;  /* */
-    color: var(--headline);
-    line-height: 100%;
-
-    margin-bottom: 2.4rem;
-
-}
 
 #home p {
     font-size: 1.8rem;
@@ -161,45 +229,6 @@ section {
     font-size: 1.6rem;
 }
 
-/*======= NAVIGATION - Barra ==================================*/
-nav {
-    display: flex;
-
-    height: var(--nav-height);
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%); 
-
-    z-index: 100;
-}
-
-nav .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-}
-
-/*Classe para estilizar quando houver rolagem*/
-nav.scroll {
-    background-color: var(--primary-color);
-}
-
-nav.scroll svg:nth-child(1) path{
-    fill: white;/*Primeiro SVG*/
-}
-
-nav.scroll button path{
-    stroke: white; /*Segundo*/
-}
-
-nav button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
 /*======= MENU - EXPANDED =======================================*/
 body.menu-expanded {
     overflow: hidden;
@@ -207,7 +236,7 @@ body.menu-expanded {
 
 /*Some com tudo, menos o nav*/
 body.menu-expanded > :not(nav){
-    display: none;
+    visibility: hidden;
 }
 
 .menu,
@@ -244,7 +273,7 @@ body.menu-expanded .menu {
 }
 
 body.menu-expanded nav {
-    position: relative;
+   
 }
 
 /*Pega o primeiro ul*/
@@ -303,30 +332,14 @@ body.menu-expanded button path{
 }
 
 /*======= SERVICES =======================================*/
-#services header h4{
-    font-size: 1.4rem;
-    line-height: 150%;
-
-    letter-spacing: 0.08em;
-    color: var(--primary-color);
-
-    text-transform: uppercase;
-    margin-bottom: 1.6rem;
+#services header h2 {
+    margin-bottom: 6rem;
 }
 
 #services .cards{
     display: flex;
     flex-direction: column;
     gap: 3.2rem;
-}
-
-#services header h2{
-    font-size: 3rem;
-    line-height: 3.9rem;
-
-    color: var(--headline);
-
-    margin-bottom: 6rem;
 }
 
 #services .card{
@@ -345,6 +358,22 @@ body.menu-expanded button path{
     margin-block: 1.6rem; /*em cima e em baixo*/
 }
 
+/*======= ABOUT =======================================*/
+#about {
+    text-align: left;
+    background-color: var(--brand-beige);
+}
+
+#about header h2 {
+    margin-bottom: 2.4rem;
+}
+
+#about content p {
+    margin-top: 2.4rem;
+    margin-bottom: 6rem;
+}
 
 
 /* ctrl a, ctrl k ctrl 1*/
+
+/* HTML - ctrl a, ctrl k ctrl 3*/
