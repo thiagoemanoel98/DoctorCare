@@ -1,5 +1,5 @@
 # DoctorCare
 
 <h4 align="center"> 
-	🚧  DevPost 🚀 Em construção...  🚧
+	🚧  DoctorCare 🚀 Em construção...  🚧
 </h4>
